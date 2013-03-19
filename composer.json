@@ -1,0 +1,26 @@
+{
+    "name": "lagden/sf14Libs",
+    "minimum-stability": "dev",
+    "description": "Lib helpers",
+    "keywords": [ "crud", "helpers", "lib" ],
+    "homepage": "https://github.com/lagden/sf14Libs",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Thiago Lagden",
+            "email": "lagden@gmail.com",
+            "homepage": "http://lagden.github.com/"
+        }
+    ],
+    "require": {
+        "php": ">=5.3",
+    },
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-0": { "lagden": "lib/lagden" }
+    },
+    "config": {
+        "bin-dir": "bin"
+    }
+}

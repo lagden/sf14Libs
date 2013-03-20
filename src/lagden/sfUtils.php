@@ -1,6 +1,10 @@
 <?php
 namespace lagden;
 
+use sfConfig as sfConfig;
+use sfContext as sfContext;
+use sfOutputEscaper as sfOutputEscaper;
+
 // Depedencies symfony 1.4 libs
 require_once(sfConfig::get('sf_symfony_lib_dir').'/helper/UrlHelper.php');
 

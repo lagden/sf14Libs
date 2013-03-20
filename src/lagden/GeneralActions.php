@@ -3,6 +3,9 @@ namespace lagden;
 
 use lagden\Utils as Utils;
 use lagden\Xtras as Xtras;
+use sfConfig as sfConfig;
+use sfContext as sfContext;
+use Doctrine_Core as Doctrine_Core;
 
 // Depedencies symfony 1.4 libs
 require_once(sfConfig::get('sf_symfony_lib_dir').'/helper/UrlHelper.php');

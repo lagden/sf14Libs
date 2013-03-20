@@ -1,6 +1,8 @@
 <?php
 namespace lagden;
 
+use sfConfig as sfConfig;
+use Doctrine_Inflector as Doctrine_Inflector;
 // Depedencies symfony 1.4 libs
 
 class GetFile

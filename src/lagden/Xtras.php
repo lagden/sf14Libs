@@ -3,6 +3,10 @@ namespace lagden;
 
 use lagden\Utils as Utils;
 use lagden\FileCache as FileCache;
+use sfConfig as sfConfig;
+use sfContext as sfContext;
+use Doctrine_Core as Doctrine_Core;
+
 // Depedencies symfony 1.4 libs
 
 /**

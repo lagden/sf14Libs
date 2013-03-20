@@ -2,6 +2,7 @@
 namespace lagden;
 
 use lagden\GetFile as GetFile;
+use sfConfig as sfConfig;
 
 // Depedencies symfony 1.4 libs
 

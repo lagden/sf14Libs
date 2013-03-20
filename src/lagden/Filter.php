@@ -2,6 +2,10 @@
 namespace lagden;
 
 use lagden\Utils as Utils;
+use lagden\Xtras as Xtras;
+use sfConfig as sfConfig;
+use sfContext as sfContext;
+
 // Depedencies symfony 1.4 libs
 
 class Filter

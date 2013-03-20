@@ -1,6 +1,9 @@
 <?php
 namespace lagden;
 
+use sfConfig as sfConfig;
+use sfFileCache as sfFileCache;
+
 // Depedencies symfony 1.4 libs
 
 class FileCache

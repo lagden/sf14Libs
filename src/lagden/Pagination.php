@@ -92,6 +92,6 @@ class Pagination
 
     public static function buildUrl($route,$params)
     {
-        return sfUtils::sfUtils($route, $params, static::$merge);
+        return sfUtils::buildUrl($route, $params, static::$merge);
     }
 }

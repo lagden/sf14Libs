@@ -58,7 +58,7 @@ class Filter
         {
             foreach($filters as $k => $v)
             {
-                if($k != 'q' && Utils::stringIsNullOrEmpty($v) == false)
+                if($k != 'q' && $k != '_csrf_token' && Utils::stringIsNullOrEmpty($v) == false)
                 {
                     $q->andWhere("{$alias}.{$k} = ?", $v);
                 }

@@ -6,6 +6,9 @@ use lagden\FileCache as FileCache;
 use sfConfig as sfConfig;
 use sfContext as sfContext;
 use Doctrine_Core as Doctrine_Core;
+use ProjectConfiguration as ProjectConfiguration;
+use Zend_Paginator as Zend_Paginator;
+use sfDoctrinePager as sfDoctrinePager;
 
 // Depedencies symfony 1.4 libs
 

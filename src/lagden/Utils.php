@@ -1,5 +1,6 @@
 <?php
 namespace lagden;
+use \DateTime as DateTime;
 
 class Utils
 {

@@ -3,6 +3,7 @@ namespace lagden;
 
 use sfConfig as sfConfig;
 use sfFileCache as sfFileCache;
+use sfCache as sfCache;
 
 // Depedencies symfony 1.4 libs
 

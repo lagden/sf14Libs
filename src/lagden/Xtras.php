@@ -3,12 +3,14 @@ namespace lagden;
 
 use lagden\Utils as Utils;
 use lagden\FileCache as FileCache;
+use lagden\RelationList as RelationList;
 use sfConfig as sfConfig;
 use sfContext as sfContext;
 use Doctrine_Core as Doctrine_Core;
 use ProjectConfiguration as ProjectConfiguration;
 use Zend_Paginator as Zend_Paginator;
 use sfDoctrinePager as sfDoctrinePager;
+use sfRequest as sfRequest;
 
 // Depedencies symfony 1.4 libs
 
@@ -321,6 +323,24 @@ class Xtras
                 $r->addMeta('keywords', Utils::getJoin($o->Tags), true, true);    
             }
         }
+    }
+
+    // Post Helper
+    public static function helper($post)
+    {
+        // Collections
+        $theCollection = array(
+            array('target'=>'tags_list','model'=>'Tag','field'=>'name','create'=>true),
+        );
+        
+        foreach ($theCollection as $vc)
+        {
+            if(isset($post["{$vc['target']}"]))
+            {
+                $post["{$vc['target']}"] = RelationList::findByNameOrCreate($post["{$vc['target']}"],$vc['model'],$vc['field'],$vc['create']);
+            }
+        }
+        return $post;
     }
 
     static public function linkMedia($t, $rel, $tbl, $title = null, $descricao = null)

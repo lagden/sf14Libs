@@ -1,4 +1,7 @@
 <?php
+namespace lagden;
+use Doctrine_Core as Doctrine_Core;
+
 class RelationList
 {
     /**

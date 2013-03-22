@@ -6,6 +6,10 @@ use lagden\Xtras as Xtras;
 use sfConfig as sfConfig;
 use sfContext as sfContext;
 use Doctrine_Core as Doctrine_Core;
+use sfActions as sfActions;
+use sfWebRequest as sfWebRequest;
+use sfRequest as sfRequest;
+use sfForm as sfForm;
 
 // Depedencies symfony 1.4 libs
 require_once(sfConfig::get('sf_symfony_lib_dir').'/helper/UrlHelper.php');
@@ -150,7 +154,7 @@ class GeneralActions extends sfActions
 
     private function processForm(sfWebRequest $request, sfForm $form)
     {
-        $post = $request->getParameter($form->getName());
+        $post = Xtras::helper($request->getParameter($form->getName()));
         
         $form->bind($post, $request->getFiles($form->getName()));
         if ($form->isValid())
@@ -178,14 +182,17 @@ class GeneralActions extends sfActions
         }
         else
         {
-            $notice = 'Formulário inválido.';
-            $this->getUser()->setFlash('notice', "{$notice}", true);
+            // Formulário inválido
+            $errors = array();
+            foreach($form as $k=>$v)
+                if ($form[$k]->getError())
+                    $errors[$k]="{$form[$k]->renderLabelName()} - {$form[$k]->getError()}";
 
-            // Debug
-            // $errors=array();
-            // foreach($form as $k=>$v)$errors[$k]=$form[$k]->renderError();
-            // Utils::trace($form->renderGlobalErrors(),$errors);
-            // die;
+            // var_dump($form->getGlobalErrors());die;
+            // var_dump($form->renderGlobalErrors());die;
+            
+            $notice = (!empty($errors)) ? join("<br>", $errors) : 'Formulário inválido | getGlobalErrors | renderGlobalErrors';
+            $this->getUser()->setFlash('notice', "{$notice}", true);
         }
     }
 
@@ -379,7 +386,7 @@ class GeneralActions extends sfActions
         if(!$auth) return $this->renderText("end_of_session");
 
         $merge = array_merge($g['partialParam'], array('id'=>$request['id'],'file'=>$request['file']));
-        return $this->renderText(Utils::get_partial($g['partial'],$merge,$g['partialSub']));
+        return $this->renderText(sfUtils::get_partial($g['partial'],$merge,$g['partialSub']));
     }
 
     // Galeria Stuff

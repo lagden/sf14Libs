@@ -74,6 +74,7 @@ class Xtras
     static public function getZendPager($result, $request, $maxPerPage)
     {
         ProjectConfiguration::registerZend();
+        $result = (is_null($result)) ? array() : $result;
         $pagina = $request->getParameter('pagina',1);
         $pager = Zend_Paginator::factory($result);
         $pager->setCurrentPageNumber($pagina);

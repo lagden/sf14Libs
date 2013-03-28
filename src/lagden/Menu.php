@@ -33,20 +33,19 @@ class Menu
                 }
                 else
                 {
-                    $drop.='<li'.((count($classes)>0)?' class="'.join(' ',$classes).'"':'').'>'. $a ;
+                    $drop.='<li'.((count($classes)>0)?' class="'.join(' ',$classes).'"':'').'>'. $a;
+                    if(isset($v['children']) && !$simple)
+                    {
+                        $drop.=static::dropdown($v['children'],$uri,'dropdown-menu');
+                        $close=true;
+                    }
+                    else
+                    {
+                        $drop.='</li>';
+                        $close=false;
+                    }
+                    if($close) $drop.='</li>';
                 }
-
-                if(isset($v['children']) && !$simple)
-                {
-                    $drop.=static::dropdown($v['children'],$uri,'dropdown-menu');
-                    $close=true;
-                }
-                else
-                {
-                    $drop.='</li>';
-                    $close=false;
-                }
-                if($close) $drop.='</li>';
             }
         }
         $drop.='</ul>';

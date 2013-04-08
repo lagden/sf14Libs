@@ -21,24 +21,27 @@ class Filter
 
         if (isset($filters[$name]) && $filters[$name])
         {
-            try
+            if(method_exists($table,'search'))
             {
-                // Removendo palavras pequenas
-                $fix = static::fix($filters[$name]);
+                try
+                {
+                    // Removendo palavras pequenas
+                    $fix = static::fix($filters[$name]);
 
-                // Try Searchable
-                $search = $table->search($fix);
-                $arr = array();
+                    // Try Searchable
+                    $search = $table->search($fix);
+                    $arr = array();
 
-                foreach($search as $v)
-                    $arr[] = $v['id'];
+                    foreach($search as $v)
+                        $arr[] = $v['id'];
 
-                if(count($arr)>0)
-                    $q->orWhereIn("{$alias}.id", $arr);
-            }
-            catch(Exception $e)
-            {
-                // No Searchable
+                    if(count($arr)>0)
+                        $q->orWhereIn("{$alias}.id", $arr);
+                }
+                catch(Exception $e)
+                {
+                    // No Searchable
+                }
             }
 
             // Or Array

@@ -153,7 +153,8 @@ class Xtras
     static public function getFilterQuery($cookie='cookie_search', $entity=null)
     {
         // Valores
-        $values=static::get($cookie);
+        $cookie = sfConfig::get("cookie_search", $cookie);
+        $values=Xtras::get($cookie);
 
         // Query
         $entity = sfConfig::get('table_model',$entity);

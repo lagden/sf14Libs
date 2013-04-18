@@ -344,30 +344,4 @@ class Xtras
         }
         return $post;
     }
-
-    static public function linkMedia($t, $rel, $tbl, $title = null, $descricao = null)
-    {
-        $title = $title ? $title : $t->get('nome');
-        $descricao = $descricao ? $descricao : $title;
-        $r = "";
-        switch ($t->get('midia')) {
-            case 'imagem':
-                $href = public_path("/uploads/{$tbl}/{$t->get('arquivo')}");
-                $r = '<a class="fancybox-media" rel="'.$rel.'" title="'.$title.'" href="'.$href.'">'.$descricao.'</a>';
-                break;
-            case 'video':
-                $href = $t->get('link');
-                $r = '<a class="fancybox-media fancybox.iframe" rel="'.$rel.'" title="'.$title.'" href="'.$href.'">'.$descricao.'</a>';
-                break;
-            case 'audio':
-                $href = $t->get('audio');
-                $r = '<a class="fancybox-media fancybox.iframe" rel="'.$rel.'" title="'.$title.'" href="https://w.soundcloud.com/player/?color=990000&show_artwork=true&url='.$href.'">'.$descricao.'</a>';
-                break;
-            default:
-                $href = public_path("/uploads/{$tbl}/{$t->get('arquivo')}");
-                $r = '<a download="'.$t->get('slug').'" href="'.$href.'">'.$descricao.'</a>';
-                break;
-        }
-        return $r;
-    }
 }

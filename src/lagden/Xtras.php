@@ -11,6 +11,7 @@ use ProjectConfiguration as ProjectConfiguration;
 use Zend_Paginator as Zend_Paginator;
 use sfDoctrinePager as sfDoctrinePager;
 use sfRequest as sfRequest;
+use SearchLucene as SearchLucene;
 
 // Depedencies symfony 1.4 libs
 
